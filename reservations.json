@@ -1,0 +1,24 @@
+[
+    {
+        "nom": "ANDRIANAJA Tiavinjanahary",
+        "email": "tiavinjanahary07@gmail.com",
+        "telephone": "0347180313",
+        "nb-voyageurs": "1",
+        "destination": "New York",
+        "budget": "moins-1000",
+        "date-depart": "2025-06-11",
+        "duree": "weekend",
+        "commentaires": ""
+    },
+    {
+        "nom": "ANDRIANAJA Tiavinjanahary",
+        "email": "tiavinjanahary07@gmail.com",
+        "telephone": "0347180313",
+        "nb-voyageurs": "1",
+        "destination": "New York",
+        "budget": "moins-1000",
+        "date-depart": "2025-06-11",
+        "duree": "weekend",
+        "commentaires": ""
+    }
+]

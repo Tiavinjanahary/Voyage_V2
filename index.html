@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitia Voyages - Votre Agence de Voyage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-paper-plane"></i>
+                <span>Nitia Voyages</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#reservation" class="nav-link">Réservation</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">
+                Découvrez le monde avec nous
+            </h1>
+            <p class="hero-subtitle animate-fade-in-delay">
+                Des voyages inoubliables, des souvenirs éternels
+            </p>
+            <div class="hero-cta animate-slide-up">
+                <button class="btn btn-primary" onclick="scrollToSection('destinations')">
+                    <i class="fas fa-compass"></i>
+                    Explorer les destinations
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('reservation')">
+                    <i class="fas fa-calendar-alt"></i>
+                    Réserver maintenant
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container animate-slide-up-delay">
+            <div class="search-box">
+                <div class="search-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <label>Destination</label>
+                        <input type="text" id="destination-search" list="destinations" placeholder="Où souhaitez-vous aller ?">
+                        <datalist id="destinations">
+                        <option value="Paris">
+                        <option value="Londres">
+                        <option value="New York">
+                        <option value="Tokyo">
+                        <option value="Rome">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="search-item">
+                    <i class="fas fa-calendar"></i>
+                    <div>
+                        <label>Départ</label>
+                        <input type="date" id="departure-date">
+                    </div>
+                </div>
+                <div class="search-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <div>
+                        <label>Retour</label>
+                        <input type="date" id="return-date">
+                    </div>
+                </div>
+                <div class="search-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <label>Voyageurs</label>
+                        <select id="travelers">
+                            <option value="1">1 voyageur</option>
+                            <option value="2">2 voyageurs</option>
+                            <option value="3">3 voyageurs</option>
+                            <option value="4">4 voyageurs</option>
+                            <option value="5+">5+ voyageurs</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn" onclick="searchTrips()">
+                    <i class="fas fa-search"></i>
+                    Rechercher
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Destinations Populaires</h2>
+                <p>Découvrez nos destinations les plus prisées</p>
+            </div>
+            
+            <!-- Filtres -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterDestinations('all')">Toutes</button>
+                <button class="filter-btn" onclick="filterDestinations('europe')">Europe</button>
+                <button class="filter-btn" onclick="filterDestinations('asie')">Asie</button>
+                <button class="filter-btn" onclick="filterDestinations('amerique')">Amérique</button>
+                <button class="filter-btn" onclick="filterDestinations('afrique')">Afrique</button>
+                <button class="filter-btn" onclick="filterDestinations('oceanie')">Océanie</button>
+            </div>
+
+            <div class="destinations-grid" id="destinations-grid">
+                <!-- Les destinations seront générées par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Services</h2>
+                <p>Une expérience de voyage complète et personnalisée</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Vols & Billets</h3>
+                    <p>Réservation de vols au meilleur prix avec nos partenaires aériens de confiance.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Hébergements</h3>
+                    <p>Sélection d'hôtels, appartements et logements uniques pour tous les budgets.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Location de Voiture</h3>
+                    <p>Véhicules de location dans le monde entier pour une liberté totale.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Circuits Organisés</h3>
+                    <p>Voyages guidés et circuits thématiques avec guides experts locaux.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Assurance Voyage</h3>
+                    <p>Protection complète pour voyager l'esprit tranquille.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support 24/7</h3>
+                    <p>Assistance client disponible 24h/24 et 7j/7 pendant votre voyage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réservation Section -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Réservez Votre Voyage</h2>
+                <p>Planifiez votre prochaine aventure en quelques clics</p>
+            </div>
+            
+            <div class="reservation-container">
+                <form class="reservation-form" id="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom complet *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nb-voyageurs">Nombre de voyageurs</label>
+                            <select id="nb-voyageurs" name="nb-voyageurs">
+                                <option value="1">1 voyageur</option>
+                                <option value="2">2 voyageurs</option>
+                                <option value="3">3 voyageurs</option>
+                                <option value="4">4 voyageurs</option>
+                                <option value="5+">5+ voyageurs</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination-form">Destination souhaitée</label>
+                            <input type="text" id="destination-form" name="destination" placeholder="Ex: Paris, Tokyo, New York...">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget approximatif</label>
+                            <select id="budget" name="budget">
+                                <option value="">Sélectionner un budget</option>
+                                <option value="moins-1000">Moins de 1000€</option>
+                                <option value="1000-2500">1000€ - 2500€</option>
+                                <option value="2500-5000">2500€ - 5000€</option>
+                                <option value="plus-5000">Plus de 5000€</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date-depart-form">Date de départ souhaitée</label>
+                            <input type="date" id="date-depart-form" name="date-depart">
+                        </div>
+                        <div class="form-group">
+                            <label for="duree">Durée du voyage</label>
+                            <select id="duree" name="duree">
+                                <option value="">Sélectionner la durée</option>
+                                <option value="weekend">Weekend (2-3 jours)</option>
+                                <option value="semaine">Une semaine</option>
+                                <option value="2-semaines">Deux semaines</option>
+                                <option value="mois">Un mois ou plus</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="commentaires">Commentaires ou demandes spéciales</label>
+                        <textarea id="commentaires" name="commentaires" rows="4" placeholder="Décrivez vos envies, vos préférences ou toute demande particulière..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Envoyer ma demande
+                    </button>
+                </form>
+                
+                <div class="reservation-info">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Réponse rapide</h4>
+                        <p>Nous vous répondons sous 24h avec un devis personnalisé</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-gift"></i>
+                        <h4>Offre spéciale</h4>
+                        <p>-10% sur votre première réservation avec le code WELCOME10</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-medal"></i>
+                        <h4>Expertise</h4>
+                        <p>Plus de 15 ans d'expérience dans l'organisation de voyages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contactez-nous</h2>
+                <p>Notre équipe est là pour vous accompagner</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>123 Rue du Voyage<br>75001 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@voyages-evasion.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 9h - 18h<br>Sam: 9h - 17h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="nom" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="sujet" placeholder="Sujet" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Voyages Évasion</span>
+                    </div>
+                    <p>Votre partenaire de confiance pour des voyages exceptionnels depuis 2008.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="#">Europe</a></li>
+                        <li><a href="#">Asie</a></li>
+                        <li><a href="#">Amérique</a></li>
+                        <li><a href="#">Afrique</a></li>
+                        <li><a href="#">Océanie</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Vols</a></li>
+                        <li><a href="#">Hôtels</a></li>
+                        <li><a href="#">Circuits</a></li>
+                        <li><a href="#">Assurance</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Voyages Évasion. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmation -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h3>Demande envoyée !</h3>
+            <p>Merci pour votre demande. Nous vous contacterons sous 24h.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
